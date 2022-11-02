@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import { times } from 'lodash';
-import PropTypes from 'prop-types';
-import StepIcon from './StepIcon';
+import React, { Component } from "react";
+import { View } from "react-native";
+import { times } from "lodash";
+import PropTypes from "prop-types";
+import StepIcon from "./StepIcon";
 
 class ProgressSteps extends Component {
   state = {
@@ -28,9 +28,13 @@ class ProgressSteps extends Component {
     let step = [];
 
     times(this.state.stepCount, (i) => {
-      const isCompletedStep = this.props.isComplete ? true : i < this.state.activeStep;
+      const isCompletedStep = this.props.isComplete
+        ? true
+        : i < this.state.activeStep;
 
-      const isActiveStep = this.props.isComplete ? false : i === this.state.activeStep;
+      const isActiveStep = this.props.isComplete
+        ? false
+        : i === this.state.activeStep;
 
       step.push(
         <View key={i}>
@@ -67,17 +71,17 @@ class ProgressSteps extends Component {
   render() {
     const styles = {
       stepIcons: {
-        position: 'relative',
-        justifyContent: 'space-evenly',
-        alignSelf: 'center',
-        flexDirection: 'row',
+        position: "relative",
+        justifyContent: "space-evenly",
+        alignSelf: "center",
+        flexDirection: "row",
         top: this.props.topOffset,
         marginBottom: this.props.marginBottom,
       },
     };
 
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ height: 120, width: "100%" }}>
         <View style={styles.stepIcons}>{this.renderStepIcons()}</View>
         <View style={{ flex: 1 }}>
           {React.cloneElement(this.props.children[this.state.activeStep], {
